@@ -1,0 +1,228 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background-color: #ddd;
+    font-family: "Source Sans 3", serif;
+}
+.container {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1rem 1fr 1rem;
+    grid-template-areas: 
+    "... main ..."
+    "... recent-post-txt ..."
+    "... recent-posts ...";
+
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    grid-area: header;
+    background-color: #f1f1f1;
+    grid-area: header;
+}
+
+.header-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.header-left h1 {
+    font-size: 20.04px;
+    font-weight: 700;
+    font-family: "Roboto", serif;
+
+}
+.logo {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-right: 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: #090909;
+    text-align: center;
+}
+a:hover {
+    color: blueviolet;
+}
+/* Main */
+
+main {
+    grid-area: main;
+}
+main h5 {
+    font-size: 1rem;
+}
+
+.avatar {
+    width: 150px;
+    border-radius: 50%;
+    display: block;
+    margin: 0.5rem auto;
+}
+
+/* Recent Posts section */
+.recent-posts {
+    margin-top: 2rem;
+    grid-area: recent-posts;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(75px, 1fr));
+    grid-template-areas: 
+    "recent"
+    "post1"
+    "post2"
+    "post3";
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.recent-posts p {
+    margin-top: 0.5rem;
+}
+.recent-posts h3 {
+    margin: 0;
+}
+.recent-posts h5 {
+    margin-bottom: 0.5rem;
+    margin-top: .5rem;
+}
+.post img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+.post-1 {
+    grid-area: post1;
+}
+.post-2 {
+    grid-area: post2;
+}
+.post-3 {
+    grid-area: post3;
+}
+
+/* Footer */
+footer {
+    background-color: #202020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2.7rem;
+    line-height: 0.3;
+    grid-area: footer;
+}
+footer p {
+    color: #ECECEC;
+    font-weight: 700;
+    font-size: 1.1rem;
+
+}
+footer span {
+    color: #D7D7D7;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.recent-posts-txt {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    grid-area: recent-post-txt;
+}
+
+/* Navbar */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    
+}
+.hamburger {
+    cursor: pointer;
+    display: none;
+}
+.nav-link {
+    transition: 0.7s ease;
+}
+.bar {
+    width: 25px;
+    height: 4px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #202020;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .hamburger{
+        display: block;
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 65px;
+        gap: 0;
+        flex-direction: column;
+        background: #202020;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+    .nav-item {
+        margin: 16px 0;
+    }
+    .nav-link {
+        color: white;
+    }
+    .nav-menu.active {
+        right: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .recent-posts {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        grid-template-areas: 
+        "post1 post2 post3";
+    }
+    .avatar {
+        width: 200px;
+    }
+    .text-container {
+        padding: 0 3rem;
+    }
+}
+@media (min-width: 1000px) {
+    .container {
+        width: 1000px;
+        margin: 0 auto;
+    }
+}
